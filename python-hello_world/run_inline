@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-print(f"Best School: {88+10}")
+print(f"{2+2}")
