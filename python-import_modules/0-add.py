@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import add.add
+import add_0.add
 
 a = 1, b = 2
 
