@@ -19,13 +19,13 @@ def roman_to_int(roman_string):
         for i in range(0, len(roman_string)):
             try:
                 if roman_string[i] == "I" and \
-                        (roman_string[i + 1] == "V" \
+                        (roman_string[i + 1] == "V"
                          or roman_string[i + 1] == "X") \
                         or roman_string[i] == "X" and \
-                        (roman_string[i + 1] == "C" \
+                        (roman_string[i + 1] == "C"
                          or roman_string[i + 1] == "L") \
                         or roman_string[i] == "C" and \
-                        (roman_string[i + 1] == "D" \
+                        (roman_string[i + 1] == "D"
                          or roman_string[i + 1] == "M"):
                     sum_list.append(-int(roman_numerals[roman_string[i]]))
                 else:
