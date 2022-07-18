@@ -26,7 +26,7 @@ def roman_to_int(roman_string):
                          roman_string[i + 1] == "L") \
                         or roman_string[i] == "C" and \
                         (roman_string[i + 1] == "D" or 
-                         roman_string[i + 1] == "M")
+                         roman_string[i + 1] == "M"):
                     sum_list.append(-int(roman_numerals[roman_string[i]]))
                 else:
                     sum_list.append(int(roman_numerals[roman_string[i]]))
