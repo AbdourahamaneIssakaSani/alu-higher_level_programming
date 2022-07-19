@@ -16,13 +16,21 @@ def roman_to_int(roman_string):
     if len(roman_string) == 1:
         return roman_numerals[roman_string]
     if len(roman_string) > 1:
-        for i in range(len(roman_string)):
+        for i in range(0, len(roman_string)):
             try:
                 if roman_string[i] == "I" and \
-                        (roman_string[i + 1] == "V" or roman_string[i + 1] == "X"):
+                        (roman_string[i + 1] == "V" or
+                         roman_string[i + 1] == "X") \
+                        or roman_string[i] == "X" and \
+                        (roman_string[i + 1] == "C" or
+                         roman_string[i + 1] == "L") \
+                        or roman_string[i] == "C" and \
+                        (roman_string[i + 1] == "D" or
+                         roman_string[i + 1] == "M"):
                     sum_list.append(-int(roman_numerals[roman_string[i]]))
                 else:
                     sum_list.append(int(roman_numerals[roman_string[i]]))
             except IndexError:
+                sum_list.append(int(roman_numerals[roman_string[i]]))
                 pass
     return sum(sum_list)
