@@ -25,7 +25,7 @@ class Square:
         elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
-    
+
     def __init__(self, size=0, position=(0, 0)):
         """Initializes the data."""
         self.size = size
@@ -76,4 +76,5 @@ class Square:
                 for m in range(self.__position[0]):
                     print(' ', end="")
                 for o in range(self.__size):
-                    print("#", end="") 
+                    print("#", end="")
+                print()
