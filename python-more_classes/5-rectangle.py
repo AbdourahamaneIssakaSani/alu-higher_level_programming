@@ -28,7 +28,7 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Print the message Bye rectangle... 
+        """Print the message Bye rectangle...
         (... being 3 dots not ellipsis) when an
         instance of Rectangle is deleted"""
         print("Bye rectangle...")
