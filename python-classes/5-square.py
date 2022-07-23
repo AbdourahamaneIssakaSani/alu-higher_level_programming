@@ -10,7 +10,7 @@ class Square:
     def __init__(self, size=0):
         """Initialize data."""
         self.__size = size
-        
+
     @property
     def size(self):
         """Retrieve size."""
@@ -28,7 +28,7 @@ class Square:
     def area(self):
         """Returns square area."""
         return self.__size ** 2
-     
+
     def my_print(self):
         """prints in stdout the square with the character #."""
         if self.__size == 0:
