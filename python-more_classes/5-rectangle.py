@@ -29,7 +29,8 @@ class Rectangle:
 
     def __del__(self):
         """Print the message Bye rectangle... 
-        (... being 3 dots not ellipsis) when an instance of Rectangle is deleted"""
+        (... being 3 dots not ellipsis) when an
+        instance of Rectangle is deleted"""
         print("Bye rectangle...")
 
     @property
@@ -44,7 +45,6 @@ class Rectangle:
             value: value of width, must be >=0
         """
         if not isinstance(value, int):
-            print(isinstance(value, int))
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
