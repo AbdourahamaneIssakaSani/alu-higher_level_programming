@@ -32,7 +32,7 @@ class Rectangle:
 
     def __del__(self):
         """Print the message Bye rectangle...
-        (... being 3 dots not ellipsis) when an 
+        (... being 3 dots not ellipsis) when an
         instance of Rectangle is deleted"""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
