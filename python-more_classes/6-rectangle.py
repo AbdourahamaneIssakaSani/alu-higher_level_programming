@@ -25,8 +25,8 @@ class Rectangle:
         return rectangle[:-1]
 
     def __repr__(self):
-        """Return a string representation of the rectangle to be able t
-        o recreate a new instance by using eval() (see example below)
+        """Return a string representation of the rectangle to be able
+        to recreate a new instance by using eval() (see example below)
         """
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
