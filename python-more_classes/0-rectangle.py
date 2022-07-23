@@ -3,5 +3,5 @@
 
 
 class Rectangle:
-    """Creates a rectangle."""   
+    """Creates a rectangle."""
     pass
