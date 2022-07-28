@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Tell is you are documented."""
+"""Are you docuemnted ?"""
 
 
 import sys
