@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Tell is you are documented now Loadadd, save"""
+"""Tell is you are documented."""
 
 
 import sys
