@@ -5,6 +5,9 @@
 >>> new_list
 []
 
+>>> new_list.print_sorted()
+[]
+
 >>> new_list.append(4)
 
 >>> new_list
