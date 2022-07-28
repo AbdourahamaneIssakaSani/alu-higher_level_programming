@@ -1,0 +1,16 @@
+>>> BaseGeo = __import__('7-base_geometry').BaseGeometry
+
+>>> base = BaseGeo()
+
+>>> base.integer_validator("my_int", 12)
+
+>>> base.integer_validator("width", 89)
+
+>>> base.integer_validator("name", "John")
+[TypeError] name must be an integer
+
+>>> base.integer_validator("age", 0)
+[ValueError] age must be greater than 0
+
+>>> base.integer_validator("distance", -4)
+[ValueError] distance must be greater than 0
