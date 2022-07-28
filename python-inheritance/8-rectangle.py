@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Inherits BaseGeometry class"""
+"""Inherits BaseGeometry class documented now"""
 
 
 class Rectangle(BaseGeometry):
