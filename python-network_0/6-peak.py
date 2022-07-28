@@ -7,7 +7,7 @@ def find_peak(list_of_integers):
     if len(list_of_integers) % 2 == 0:
         mid = (len(list_of_integers) // 2) - 1
     else:
-        len(list_of_integers) // 2
+        mid = len(list_of_integers) // 2
 
     if len(list_of_integers) <= 2:
         return
