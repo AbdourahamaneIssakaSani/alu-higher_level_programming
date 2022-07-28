@@ -18,5 +18,5 @@ def find_peak(list_of_integers):
             list_of_integers[mid + 1]:
         return peak
     else:
-        return find_peak(list_of_integers[:mid]) or \
+        return find_peak(list_of_integers[:mid]) and \
                find_peak(list_of_integers[mid:])
