@@ -9,12 +9,14 @@ def find_peak(list_of_integers):
     else:
         mid = len(list_of_integers) // 2
 
+    peak = list_of_integers[mid]
+
     if len(list_of_integers) <= 2:
-        return
-    elif len(list_of_integers) == 3 and list_of_integers[mid - 1] <= \
-            list_of_integers[mid] and list_of_integers[mid] >= \
+        return max(list_of_integers)
+    elif list_of_integers[mid - 1] <= \
+            peak and peak >= \
             list_of_integers[mid + 1]:
-        return list_of_integers[mid]
+        return peak
     else:
         return find_peak(list_of_integers[:mid]) or \
                find_peak(list_of_integers[mid:])
