@@ -21,7 +21,7 @@
 [4, 2, -1]
 
 >>> new_list.print_sorted()
-
->>> new_list
 [-1, 2, 4]
 
+>>> new_list
+[4, 2, -1]
