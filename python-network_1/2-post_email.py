@@ -8,6 +8,7 @@ import sys
 
 
 if __name__ == '__main__':
+    """Documented"""
     url = sys.argv[1]
     values = {"email": sys.argv[2]}
     data = urllib.parse.urlencode(values)
