@@ -9,4 +9,4 @@ if __name__ == '__main__':
     if response.status_code >= 400:
         print("Error code: {}".format(response.status_code))
     else:
-        print("Your email is: {}".format(response.text))
+        print("{}".format(response.text))
