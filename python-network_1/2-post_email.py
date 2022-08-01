@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """I documented you"""
-
-
 import urllib.request
 import urllib.parse
 import sys
