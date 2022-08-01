@@ -4,7 +4,7 @@ import requests
 import sys
 
 if __name__ == '__main__':
-    params = sys.argv[1] if sys.argv[1] == 1 else q = ""
+    params = sys.argv[1] if sys.argv[1] else q = ""
     response = requests.post("http://0.0.0.0:5000/search_user", data={"q": params})
     try:
         json_response = response.json()
