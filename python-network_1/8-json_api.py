@@ -7,7 +7,8 @@ if __name__ == '__main__':
     try:
         params = sys.argv[1]
     except IndexError:
-        params = ""
+        print("Not a valid JSON")
+        return
     response = requests.post("http://0.0.0.0:5000/search_user", data={"q": params})
     try:
         json_response = response.json()
