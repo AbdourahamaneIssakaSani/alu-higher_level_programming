@@ -21,3 +21,11 @@ class TestMaxInteger(unittest.TestCase):
     def test_empty_case(self):
         """"Doc"""
         self.assertEqual(max_integer([]), None)
+
+    def test_max_middle_case(self):
+        """"Doc"""
+        self.assertEqual(max_integer([1, 2, 5, 3, 4]), 5)
+
+    def test_max_middle_case(self):
+        """"Doc"""
+        self.assertEqual(max_integer([5]), 5)
