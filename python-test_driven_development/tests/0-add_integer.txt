@@ -27,5 +27,9 @@ TypeError: b must be an integer
 Traceback (most recent call last):
 ValueError: cannot convert float NaN to integer
 
->>> add_integer(1.5)
+>>> add_integer(1.55)
 99
+
+>>> add_integer(2 ** 10000* .1)
+Traceback (most recent call last):
+OverflowError: int too large to convert to float
