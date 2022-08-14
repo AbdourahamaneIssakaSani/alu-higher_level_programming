@@ -12,8 +12,8 @@ def text_indentation(text):
         if text[i] in characters:
             try:
                 if text[i + 1] == " ":
-                    text = text[:i + 1] + text[i + 1:]
+                    text = text[:i + 1] + text[i + 2:]
                 text = text[:i + 1] + "\n\n" + text[i + 1:]
             except IndexError:
                 pass
-    print(text)
+    print(text, end="")
