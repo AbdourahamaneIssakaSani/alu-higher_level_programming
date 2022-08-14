@@ -33,3 +33,7 @@ ValueError: cannot convert float NaN to integer
 >>> add_integer(2 ** 10000* .1)
 Traceback (most recent call last):
 OverflowError: int too large to convert to float
+
+>>> add_integer(float('inf'))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
