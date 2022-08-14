@@ -4,6 +4,9 @@
 
 def matrix_divided(matrix, div):
     """"Doc"""
+    if not isinstance(matrix, list):
+        TypeError("matrix must be a matrix "
+                  "(list of lists) of integers/floats")
     for row in matrix:
         if type(row) != list:
             raise TypeError("matrix must be a matrix "
