@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 """Doc"""
 
+
 def matrix_divided(matrix, div):
     """"Doc"""
     for row in matrix:
         if type(row) != list:
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+            raise TypeError("matrix must be a matrix "
+                            "(list of lists) of integers/floats")
         for item in row:
             if not isinstance(item, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError("matrix must be a matrix"
+                                " (list of lists) of integers/floats")
     common_size = len(matrix[0])
     for row in matrix:
         if len(row) != common_size:
