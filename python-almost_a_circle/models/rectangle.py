@@ -114,4 +114,3 @@ class Rectangle(Base):
                 self.y = kwargs["y"]
             except KeyError:
                 pass
-
