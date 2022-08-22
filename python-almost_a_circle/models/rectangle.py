@@ -94,13 +94,24 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}" \
             .format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """assigns an argument"""
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except IndexError:
-            pass
+        if args is not None:
+            try:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+            except IndexError:
+                pass
+        elif kwargs is not None:
+            try:
+                self.id = kwargs["id"]
+                self.width = kwargs["width"]
+                self.height = kwargs["height"]
+                self.x = kwargs["x"]
+                self.y = kwargs["y"]
+            except KeyError:
+                pass
+
