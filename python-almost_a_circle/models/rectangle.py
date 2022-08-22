@@ -96,7 +96,7 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """assigns an argument"""
-        if args is not None:
+        if len(args) != 0:
             try:
                 self.id = args[0]
                 self.width = args[1]
@@ -105,7 +105,7 @@ class Rectangle(Base):
                 self.y = args[4]
             except IndexError:
                 pass
-        elif kwargs is not None:
+        elif len(kwargs) != 0:
             try:
                 self.id = kwargs["id"]
                 self.width = kwargs["width"]
