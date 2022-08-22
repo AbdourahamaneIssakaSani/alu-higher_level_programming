@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Doc"""
+"""Class Base"""
 
 
 class Base:
@@ -7,11 +7,10 @@ class Base:
         Class Base
         Attr :
                 id: number
-        """
+    """
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Doc"""
         self.id = id
 
     @property
