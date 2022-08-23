@@ -31,5 +31,5 @@ class Base:
     def to_json_string(list_dictionaries):
         """Doc"""
         return json.dumps(list_dictionaries) \
-            if list_dictionaries is not None or len(list_dictionaries) > 0 \
+            if list_dictionaries is not None \
             else "[]"
