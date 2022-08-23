@@ -26,3 +26,10 @@ class Base:
             self.__id = self.__nb_objects
         else:
             self.__id = value
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """Doc"""
+        return json.dumps(list_dictionaries) \
+            if list_dictionaries is not None or len(list_dictionaries) > 0 \
+            else "[]"
