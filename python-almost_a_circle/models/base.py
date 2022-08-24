@@ -77,12 +77,13 @@ class Base:
         try:
             with open(cls.__name__ + ".json", "r") as file:
                 serialized_content = file.read()
-            print(serialized_content)
-            deserialized_content = cls.from_json_string(serialized_content)
-            print(deserialized_content)
-            instances_list = []
-            for instance_dict in deserialized_content:
-                instances_list.append(cls.create(**instance_dict))
-            return instances_list
         except FileNotFoundError:
             return list()
+
+        print(serialized_content)
+        deserialized_content = cls.from_json_string(serialized_content)
+        print(deserialized_content)
+        instances_list = []
+        for instance_dict in deserialized_content:
+            instances_list.append(cls.create(**instance_dict))
+        return instances_list
