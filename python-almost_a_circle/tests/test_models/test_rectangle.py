@@ -42,6 +42,7 @@ class TestRectangle(unittest.TestCase):
 
     def test__str__(self):
         """Doc"""
+        Base._Base__nb_objects = 0
         r1 = Rectangle(4, 2)
         with patch("sys.stdout", new=StringIO()) as fake_out:
             print(r1)
