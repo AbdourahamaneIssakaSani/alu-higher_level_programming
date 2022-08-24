@@ -31,7 +31,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """returns the JSON string representation of list_dictionaries"""
+        """Doc"""
         if list_dictionaries is None or \
                 len(list_dictionaries) == 0:
             return "[]"
@@ -43,9 +43,10 @@ class Base:
         """writes the JSON string representation
         of list_objs to a file
         """
-        with open(cls.__name__ + ".json", "w") as file:
+        list_objs_dict = []
+        with open(cls.__name__ + '.json', "w") as file:
             if list_objs is None or len(list_objs) == 0:
-                file.write("[]")
+                file.write('[]')
             elif type(list_objs) == list:
                 for obj in list_objs:
                     list_objs_dict.append(obj.to_dictionary())
@@ -56,7 +57,7 @@ class Base:
         """returns the list of the JSON string representation json_string"""
         if json_string is None or \
                 len(json_string) == 0:
-            return list()
+            return "[]"
         else:
             return json.loads(json_string)
 
@@ -80,4 +81,3 @@ class Base:
         for instance_dict in deserialized_content:
             instances_list.append(cls.create(**instance_dict))
         return instances_list
-    
