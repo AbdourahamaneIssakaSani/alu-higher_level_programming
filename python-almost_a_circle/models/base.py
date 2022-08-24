@@ -80,9 +80,9 @@ class Base:
         except FileNotFoundError:
             return list()
 
-        print(serialized_content)
+
         deserialized_content = cls.from_json_string(serialized_content)
-        print(deserialized_content)
+
         instances_list = []
         for instance_dict in deserialized_content:
             instances_list.append(cls.create(**instance_dict))
