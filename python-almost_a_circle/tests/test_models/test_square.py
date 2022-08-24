@@ -141,6 +141,7 @@ class TestSquare(unittest.TestCase):
     def test_save_to_file(self):
         """Doc"""
         Base._Base__nb_objects = 0
+
         Square.save_to_file(None)
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
@@ -148,6 +149,7 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file([])
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
+            self.assertEqual(type(file.read()), str)
 
         Square.save_to_file([Square(1)])
         with open("Square.json") as file:
