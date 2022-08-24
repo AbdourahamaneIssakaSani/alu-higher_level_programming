@@ -41,7 +41,7 @@ class TestSquare(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as fake_out:
             print(s1)
             self.assertEqual(fake_out.getvalue(),
-                             "[Square] (1) 0/0 - 2\n")
+                             "[Square] (22) 0/0 - 2\n")
 
     def test_display(self):
         """Doc"""
@@ -60,14 +60,14 @@ class TestSquare(unittest.TestCase):
         """Doc"""
         s1 = Square(4)
         self.assertEqual(s1.to_dictionary(),
-                         {'id': 1, 'size': 4, 'x': 0, 'y': 0})
+                         {'id': 37, 'size': 4, 'x': 0, 'y': 0})
 
     def test_update(self):
         """Doc"""
         s1 = Square(2)
 
         s1.update()
-        self.assertEqual(s1.id, 1)
+        self.assertEqual(s1.id, 38)
 
         s1.update(89)
         self.assertEqual(s1.id, 89)
@@ -115,10 +115,10 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.id, 89)
         self.assertEqual(s1.size, 1)
 
-        s1 = Square.create(**{'id': 89, 'size': 1, 'height': 2})
+        s1 = Square.create(**{'id': 89, 'size': 1, 'x': 2})
         self.assertEqual(s1.id, 89)
         self.assertEqual(s1.size, 1)
-        self.assertEqual(s1.height, 2)
+        self.assertEqual(s1.x, 2)
 
         s1 = Square.create(**{'id': 89, 'size': 1, 
                               'height': 2, 'x': 3})
@@ -148,7 +148,7 @@ class TestSquare(unittest.TestCase):
         Square.save_to_file([Square(1)])
         with open("Square.json") as file:
             self.assertEqual(file.read(),
-                             '[{"id": 1, "size": 1 "x": 0, "y": 0}]')
+                             '[{"id": 36, "size": 1 "x": 0, "y": 0}]')
 
     def test_load_from_file(self):
         """Doc"""
