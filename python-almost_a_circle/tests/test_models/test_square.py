@@ -18,15 +18,21 @@ class TestSquare(unittest.TestCase):
         s = Square(1)
         s1 = Square(1, 2)
         s2 = Square(1, 2, 3)
-        s12 = Square(1, 0)
-        s10 = Square(1, -2)
-        s13 = Square(1, 2, -3)
 
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s9 = Square(-1, 2)
 
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            s10 = Square(1, -2)
+
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s11 = Square(0, 2)
+
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            s12 = Square(1, 0)
+
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            s13 = Square(1, 2, -3)
 
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s = Square(0)
