@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 """Test for Square"""
 
+import os
 import unittest
 from io import StringIO
 from unittest.mock import patch
 
+from models.base import Base
 from models.square import Square
 
 
@@ -37,11 +39,11 @@ class TestSquare(unittest.TestCase):
 
     def test__str__(self):
         """Doc"""
-        s1 = Square(2, 0, 0, 22)
+        s1 = Square(2)
         with patch("sys.stdout", new=StringIO()) as fake_out:
             print(s1)
             self.assertEqual(fake_out.getvalue(),
-                             "[Square] (22) 0/0 - 2\n")
+                             "[Square] (1) 0/0 - 2\n")
 
     def test_display(self):
         """Doc"""
@@ -58,16 +60,17 @@ class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         """Doc"""
-        s1 = Square(4, 0, 0, 37)
+        Base._Base__nb_objects = 0
+        s1 = Square(4)
         self.assertEqual(s1.to_dictionary(),
-                         {'id': 37, 'size': 4, 'x': 0, 'y': 0})
+                         {'id': 1, 'size': 4, 'x': 0, 'y': 0})
 
     def test_update(self):
         """Doc"""
-        s1 = Square(2, 0, 0, 38)
-
+        Base._Base__nb_objects = 0
+        s1 = Square(2)
         s1.update()
-        self.assertEqual(s1.id, 38)
+        self.assertEqual(s1.id, 1)
 
         s1.update(89)
         self.assertEqual(s1.id, 89)
@@ -120,23 +123,23 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s1.size, 1)
         self.assertEqual(s1.x, 2)
 
-        s1 = Square.create(**{'id': 89, 'size': 1, 
-                              'height': 2, 'x': 3})
+        s1 = Square.create(**{'id': 89, 'size': 1,
+                              'x': 2, 'y': 3})
         self.assertEqual(s1.id, 89)
         self.assertEqual(s1.size, 1)
-        self.assertEqual(s1.height, 2)
-        self.assertEqual(s1.x, 3)
+        self.assertEqual(s1.x, 2)
+        self.assertEqual(s1.y, 3)
 
-        s1 = Square.create(**{'id': 89, 'size': 1, 
-                              'height': 2, 'x': 3, 'y': 4})
+        s1 = Square.create(**{'id': 89, 'size': 1,
+                              'x': 2, 'y': 3})
         self.assertEqual(s1.id, 89)
         self.assertEqual(s1.size, 1)
-        self.assertEqual(s1.height, 2)
-        self.assertEqual(s1.x, 3)
-        self.assertEqual(s1.y, 4)
+        self.assertEqual(s1.x, 2)
+        self.assertEqual(s1.y, 3)
 
     def test_save_to_file(self):
         """Doc"""
+        Base._Base__nb_objects = 0
         Square.save_to_file(None)
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
@@ -145,13 +148,16 @@ class TestSquare(unittest.TestCase):
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
 
-        Square.save_to_file([Square(1, 0, 0, 36)])
+        Square.save_to_file([Square(1)])
         with open("Square.json") as file:
             self.assertEqual(file.read(),
-                             '[{"id": 36, "size": 1 "x": 0, "y": 0}]')
+                             '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
 
     def test_load_from_file(self):
         """Doc"""
+        if os.path.exists("Square.json"):
+            os.remove("Square.json")
+
         self.assertEqual(Square.load_from_file(), [])
         Square.save_to_file([Square(2)])
         from_file = Square.load_from_file()
