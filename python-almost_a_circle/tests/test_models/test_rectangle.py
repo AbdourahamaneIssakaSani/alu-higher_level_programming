@@ -67,14 +67,14 @@ class TestRectangle(unittest.TestCase):
         """Doc"""
         r1 = Rectangle(4, 2)
         self.assertEqual(r1.to_dictionary(),
-                         {'id': 1, 'width': 4, 'height': 2, 'x': 0, 'y': 0})
+                         {'id': 20, 'width': 4, 'height': 2, 'x': 0, 'y': 0})
 
     def test_update(self):
         """Doc"""
         r1 = Rectangle(4, 2)
 
         r1.update()
-        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.id, 21)
 
         r1.update(89)
         self.assertEqual(r1.id, 89)
@@ -167,7 +167,7 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file([Rectangle(1, 2)])
         with open("Rectangle.json") as file:
             self.assertEqual(file.read(),
-                             '[{"id": 1, "width": 1, "height": 2, "x": 0, "y": 0}]')
+                             '[{"id": 19, "width": 1, "height": 2, "x": 0, "y": 0}]')
 
     def test_load_from_file(self):
         """Doc"""
