@@ -189,7 +189,3 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(type(from_file), list)
         self.assertEqual(from_file[0].width, 1)
         self.assertEqual(from_file[0].height, 2)
-
-
-if __name__ == '__main__':
-    unittest.main()
