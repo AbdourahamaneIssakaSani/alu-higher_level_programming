@@ -37,7 +37,7 @@ class TestSquare(unittest.TestCase):
 
     def test__str__(self):
         """Doc"""
-        s1 = Square(2)
+        s1 = Square(2, 0, 0, 22)
         with patch("sys.stdout", new=StringIO()) as fake_out:
             print(s1)
             self.assertEqual(fake_out.getvalue(),
@@ -58,13 +58,13 @@ class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         """Doc"""
-        s1 = Square(4)
+        s1 = Square(4, 0, 0, 37)
         self.assertEqual(s1.to_dictionary(),
                          {'id': 37, 'size': 4, 'x': 0, 'y': 0})
 
     def test_update(self):
         """Doc"""
-        s1 = Square(2)
+        s1 = Square(2, 0, 0, 38)
 
         s1.update()
         self.assertEqual(s1.id, 38)
@@ -145,7 +145,7 @@ class TestSquare(unittest.TestCase):
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
 
-        Square.save_to_file([Square(1)])
+        Square.save_to_file([Square(1, 0, 0, 36)])
         with open("Square.json") as file:
             self.assertEqual(file.read(),
                              '[{"id": 36, "size": 1 "x": 0, "y": 0}]')
