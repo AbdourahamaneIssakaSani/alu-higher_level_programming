@@ -4,7 +4,9 @@
 import unittest
 from io import StringIO
 from unittest.mock import patch
+import os
 
+from models.base import Base
 from models.rectangle import Rectangle
 
 
@@ -13,6 +15,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_basics(self):
         """Doc"""
+        Base._Base__nb_objects = 0
         r1 = Rectangle(1, 2)
         r2 = Rectangle(1, 2, 3)
         r3 = Rectangle(1, 2, 3, 4)
@@ -65,16 +68,18 @@ class TestRectangle(unittest.TestCase):
 
     def test_to_dictionary(self):
         """Doc"""
+        Base._Base__nb_objects = 0
         r1 = Rectangle(4, 2)
         self.assertEqual(r1.to_dictionary(),
-                         {'id': 20, 'width': 4, 'height': 2, 'x': 0, 'y': 0})
+                         {'id': 1, 'width': 4, 'height': 2, 'x': 0, 'y': 0})
 
     def test_update(self):
         """Doc"""
+        Base._Base__nb_objects = 0
         r1 = Rectangle(4, 2)
 
         r1.update()
-        self.assertEqual(r1.id, 21)
+        self.assertEqual(r1.id, 1)
 
         r1.update(89)
         self.assertEqual(r1.id, 89)
@@ -156,6 +161,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_save_to_file(self):
         """Doc"""
+        Base._Base__nb_objects = 0
         Rectangle.save_to_file(None)
         with open("Rectangle.json") as file:
             self.assertEqual(file.read(), '[]')
@@ -167,10 +173,13 @@ class TestRectangle(unittest.TestCase):
         Rectangle.save_to_file([Rectangle(1, 2)])
         with open("Rectangle.json") as file:
             self.assertEqual(file.read(),
-                             '[{"id": 19, "width": 1, "height": 2, "x": 0, "y": 0}]')
+                             '[{"id": 1, "width": 1, "height": 2, "x": 0, "y": 0}]')
 
     def test_load_from_file(self):
         """Doc"""
+        if os.path.exists("Rectangle.json"):
+            os.remove("Rectangle.json")
+
         self.assertEqual(Rectangle.load_from_file(), [])
         Rectangle.save_to_file([Rectangle(1, 2)])
         from_file = Rectangle.load_from_file()
