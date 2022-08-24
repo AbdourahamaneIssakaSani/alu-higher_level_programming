@@ -13,7 +13,7 @@ from models.square import Square
 class TestSquare(unittest.TestCase):
     """Test for class Square"""
 
-    def test_basic(self):
+    def test_instance(self):
         """Doc"""
         s = Square(1)
         s1 = Square(1, 2)
