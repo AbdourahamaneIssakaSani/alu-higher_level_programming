@@ -50,7 +50,7 @@ class Base:
             elif type(list_objs) == list:
                 for obj in list_objs:
                     list_objs_dict.append(obj.to_dictionary())
-            file.write(cls.to_json_string(list_objs_dict))
+                file.write(cls.to_json_string(list_objs_dict))
 
     @staticmethod
     def from_json_string(json_string):
