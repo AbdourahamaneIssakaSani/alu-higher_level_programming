@@ -44,10 +44,10 @@ class Base:
         of list_objs to a file
         """
 
-        with open(cls.__name__ + '.json', mode="w") as file:
-            if list_objs is None:
-                file.write(list())
-            else:
+        with open(cls.__name__ + '.json', "w") as file:
+            if list_objs is None or len(list_objs) == 0:
+                file.write('[]')
+            elif type(list_objs) == list:
                 for obj in list_objs:
                     file.write(cls.to_json_string([obj.to_dictionary()]))
 
