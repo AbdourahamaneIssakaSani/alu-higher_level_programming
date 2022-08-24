@@ -46,9 +46,10 @@ class Base:
         with open(cls.__name__ + ".json", "w") as file:
             if list_objs is None or len(list_objs) == 0:
                 file.write("[]")
-            else:
+            elif type(list_objs) == list:
                 for obj in list_objs:
-                    file.write(cls.to_json_string([obj.to_dictionary()]))
+                    list_objs_dict.append(obj.to_dictionary())
+            file.write(cls.to_json_string(list_objs_dict))
 
     @staticmethod
     def from_json_string(json_string):
@@ -68,3 +69,15 @@ class Base:
             dummy_instance = cls(4)
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances from file"""
+        with open(cls.__name__ + ".json", "r") as file:
+            serialized_content = file.read()
+        deserialized_content = cls.from_json_string(serialized_content)
+        instances_list = []
+        for instance_dict in deserialized_content:
+            instances_list.append(cls.create(**instance_dict))
+        return instances_list
+    
