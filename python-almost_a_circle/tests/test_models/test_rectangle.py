@@ -13,7 +13,7 @@ from models.rectangle import Rectangle
 class TestRectangle(unittest.TestCase):
     """Test class for Base"""
 
-    def test__init__(self):
+    def test_instance(self):
         """Doc"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(1, 2)
