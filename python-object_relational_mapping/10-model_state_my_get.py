@@ -15,7 +15,7 @@ if __name__ == "__main__":
     session = Session(engine)
 
     record = session.query(State).filter(State.name == "{}".format(
-        sys.argv[4])).first()
+        sys.argv[4])).all()
 
     print("{}: {}".format(record.__dict__['id']))
 
