@@ -73,4 +73,14 @@ class TestBase(unittest.TestCase):
             self.assertEqual(file.read(),
                              '[{"id": 1, "width": 1, '
                              '"height": 2, "x": 0, "y": 0}]')
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        s1 = Square(10, 7, 2)
+        s2 = Square(8)
+
+        Rectangle.save_to_file([r1, r2])
+        Square.save_to_file([s1, s2])
+
+        self.assertTrue(os.path.isfile('Rectangle.json'))
+        self.assertTrue(os.path.isfile('Square.json'))
 
