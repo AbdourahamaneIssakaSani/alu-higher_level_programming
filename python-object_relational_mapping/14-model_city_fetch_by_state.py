@@ -14,12 +14,13 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    records = session.query(State, City).join(City).all()
+    records = session.query(State, City) \
+        .filter(State.id == City.state_id).order_by(City.id).all()
 
     for data in records:
         print("{}: ({}) {}".format(
-            data.__dict__['name'],
-            data.__dict__['id'],
-            data.__dict__['name']))
+            data[0].__dict__['name'],
+            data[1].__dict__['id'],
+            data[1].__dict__['name']))
 
     session.close()
