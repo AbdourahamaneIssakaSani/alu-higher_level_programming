@@ -21,6 +21,8 @@ class TestRectangle(unittest.TestCase):
         r3 = Rectangle(1, 2, 3, 4)
         r8 = Rectangle(1, 2, 3, 4, 5)
 
+        self.assertEqual(r8.id, 5)
+
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             r11 = Rectangle(0, 2)
 
@@ -182,6 +184,7 @@ class TestRectangle(unittest.TestCase):
         Base._Base__nb_objects = 0
 
         Rectangle.save_to_file(None)
+        self.assertTrue(os.path.isfile("Rectangle.json"))
         with open("Rectangle.json") as file:
             self.assertEqual(file.read(), '[]')
 
@@ -207,3 +210,4 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(type(from_file), list)
         self.assertEqual(from_file[0].width, 1)
         self.assertEqual(from_file[0].height, 2)
+
