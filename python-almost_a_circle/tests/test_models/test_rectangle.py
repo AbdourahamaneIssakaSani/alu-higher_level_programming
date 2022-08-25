@@ -199,6 +199,13 @@ class TestRectangle(unittest.TestCase):
                              '[{"id": 1, "width": 1, '
                              '"height": 2, "x": 0, "y": 0}]')
 
+    def test_save_to_file_empty(self):
+        Rectangle.save_to_file([])
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+        with open("Rectangle.json") as file:
+            self.assertEqual(file.read(), "[]")
+            self.assertEqual(type(file.read()), str)        
+
     def test_load_from_file(self):
         """Doc"""
         if os.path.exists("Rectangle.json"):
