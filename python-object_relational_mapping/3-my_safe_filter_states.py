@@ -23,7 +23,7 @@ def my_safe_filter_states():
 
     cursor \
         .execute("SELECT * FROM states WHERE name= %s\
-                ORDER BY id ASC", (sys.argv[4]))
+                ORDER BY id ASC", (sys.argv[4],))
 
     records = cursor.fetchall()
     for data in records:
