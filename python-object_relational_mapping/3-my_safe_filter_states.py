@@ -22,8 +22,8 @@ def my_safe_filter_states():
     cursor = db.cursor()
 
     cursor \
-        .execute("SELECT * FROM states WHERE BINARY name='{:s}'\
-                ORDER BY id ASC".format(sys.argv[4]))
+        .execute("SELECT * FROM states WHERE BINARY name= %s\
+                ORDER BY id ASC", (sys.argv[4]))
 
     records = cursor.fetchall()
     for data in records:
