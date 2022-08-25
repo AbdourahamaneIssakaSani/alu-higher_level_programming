@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    records = session.query(State).join(City) \
+    records = session.query(State, City).join(City) \
         .filter(State.id == City.state_id).all()
 
     for data in records:
