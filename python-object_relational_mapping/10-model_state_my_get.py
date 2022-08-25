@@ -16,7 +16,7 @@ if __name__ == "__main__":
 
     record = session.query(State).filter(State.name == "{}".format(
         sys.argv[4]))
-
+    print(type(record))
     if record:
         for rec in record:
             print("{}".format(rec.__dict__['id']))
