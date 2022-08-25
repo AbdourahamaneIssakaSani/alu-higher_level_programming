@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    record = session.query(State).filter(State.name == sys.argv[4]).all()
+    record = session.query(State).filter(State.name == sys.argv[4])
 
     print(record.__dict__['id'])
 
