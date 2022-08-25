@@ -2,29 +2,23 @@
 """"Doc"""
 
 def text_indentation(text):
-    """ Doc here
-    """
-    if type(text) != str:
+    """"Doc"""
+    if not isinstance(text, (str,)):
         raise TypeError("text must be a string")
-    characters = ['.', '?', ':']
 
-    idx = 0
-    for char in text:
-        if char in characters:
-            if text[idx + 1] == " ":
-                text = text[:idx + 1] + text[idx + 2:]
+    characters = [".", "?", ":"]
+    index = 0
+    while index < len(text):
+        if text[index] in characters:
+            print(text[index], end="")
+            print('\n')
+            index += 1
+            if text[index] == " ":
+                index += 1
         else:
-            idx += 1
+            print(text[index], end="")
+            index += 1
 
-    idx = 0
-    for char in text:
-        if char in characters:
-            text = text[:idx + 1] + '\n\n' + text[idx + 1:]
-            idx += 3
-        else:
-            idx += 1
-
-    print(text, end='')
 
 # def text_indentation(text):
 #     """"Doc"""
