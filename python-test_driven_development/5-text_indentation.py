@@ -4,27 +4,14 @@
 def text_indentation(text):
     """ Doc here
     """
-    if type(text) != str:
+    if type(text) is not str:
         raise TypeError("text must be a string")
-    characters = ['.', '?', ':']
 
-    idx = 0
-    for char in text:
-        if char in characters:
-            if text[idx + 1] == " ":
-                text = text[:idx + 1] + text[idx + 2:]
-        else:
-            idx += 1
+    for delim in ".:?":
+        text = (delim + "\n\n").join(
+            [line.strip(" ") for line in text.split(delim)])
 
-    idx = 0
-    for char in text:
-        if char in characters:
-            text = text[:idx + 1] + '\n\n' + text[idx + 1:]
-            idx += 3
-        else:
-            idx += 1
-
-    print(text, end='')
+    print("{}".format(text), end="")
 # def text_indentation(text):
 #     """"Doc"""
 #     if not isinstance(text, (str,)):
