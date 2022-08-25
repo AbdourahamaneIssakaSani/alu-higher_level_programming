@@ -14,13 +14,14 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    record = session.query(State).filter(State.name == "{}".format(
-        sys.argv[4]))
+    records = session.query(State).filter(State.name == "{}".format(
+        sys.argv[4])).all()
 
-        for rec in record:
-            if rec.__dict__['id'] !== ""
+    if records:
+        for rec in records:
+            if rec.name == sys.argv[4]:
                 print("{}".format(rec.__dict__['id']))
-            else:
-                print("Not found")
+    else:
+        print("Not found")
 
     session.close()
