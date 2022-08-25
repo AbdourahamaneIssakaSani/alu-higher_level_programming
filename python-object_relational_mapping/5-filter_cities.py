@@ -25,9 +25,11 @@ def my_safe_filter_states():
                     ORDER BY cities.id ASC", (sys.argv[4],))
 
     records = cursor.fetchall()
+    cites = []
     for data in records:
-        print(data)
+        cites.append(data[0])
 
+    print(", ".join(cites))
     cursor.close()
     db.close()
 
