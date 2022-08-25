@@ -172,6 +172,13 @@ class TestSquare(unittest.TestCase):
             self.assertEqual(file.read(),
                              '[{"id": 1, "size": 1, "x": 0, "y": 0}]')
 
+    def test_save_to_file_empty(self):
+        Square.save_to_file([])
+        self.assertTrue(os.path.isfile("Square.json"))
+        with open("Square.json") as file:
+            self.assertEqual(file.read(), "[]")
+            self.assertEqual(type(file.read()), str)
+
     def test_load_from_file(self):
         """Doc"""
         if os.path.exists("Square.json"):
