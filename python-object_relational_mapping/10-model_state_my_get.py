@@ -14,8 +14,15 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    record = session.query(State).filter(State.name == sys.argv[4])
+    record = session.query(State).filter(State.name == "{}".format(
+        sys.argv[4]))
 
-    print(record.__dict__['id'])
+    if record:
+        for rec in record:
+            print("{}".format(rec.__dict__['id']))
+    else:
+        print("Not found")
+
+    session.close()
 
     session.close()
