@@ -17,4 +17,4 @@ def text_indentation(text):
                     text = text[:i + 1] + "\n\n" + text[i + 1:]
             except IndexError:
                 pass
-    print("{}".format(text), end="")
+    print(text, end="")
