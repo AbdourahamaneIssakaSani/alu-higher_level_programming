@@ -14,7 +14,8 @@ if __name__ == "__main__":
 
     session = Session(engine)
 
-    records = session.query(State).join(City).all()
+    records = session.query(State).join(City) \
+        .filter(State.id == City.state_id).all()
 
     for data in records:
         print("{}: ({}) {}".format(
