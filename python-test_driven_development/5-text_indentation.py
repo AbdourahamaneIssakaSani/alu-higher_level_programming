@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """"Doc"""
 
+
 def text_indentation(text):
     """"Doc"""
     if not isinstance(text, (str,)):
@@ -18,7 +19,6 @@ def text_indentation(text):
         else:
             print(text[index], end="")
             index += 1
-
 
 # def text_indentation(text):
 #     """"Doc"""
