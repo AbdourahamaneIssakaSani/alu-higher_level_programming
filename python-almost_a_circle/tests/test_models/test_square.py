@@ -19,6 +19,9 @@ class TestSquare(unittest.TestCase):
         s1 = Square(1, 2)
         s2 = Square(1, 2, 3)
         s12 = Square(1, 0)
+        s0 = Square(1, 2, 3, 4)
+
+        self.assertEqual(s0.id, 4)
 
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             s9 = Square(-1, 2)
@@ -155,6 +158,7 @@ class TestSquare(unittest.TestCase):
         Base._Base__nb_objects = 0
 
         Square.save_to_file(None)
+        self.assertTrue(os.path.isfile("Square.json"))
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
 
@@ -178,3 +182,4 @@ class TestSquare(unittest.TestCase):
         from_file = Square.load_from_file()
         self.assertEqual(type(from_file), list)
         self.assertEqual(from_file[0].size, 2)
+
