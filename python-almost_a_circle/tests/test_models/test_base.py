@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Test cases for Base"""
 
+import os
 import unittest
 
 from models.base import Base
@@ -39,6 +40,9 @@ class TestBase(unittest.TestCase):
         Base._Base__nb_objects = 0
 
         Square.save_to_file(None)
+
+        self.assertTrue(os.path.isfile("Square.json"))
+
         with open("Square.json") as file:
             self.assertEqual(file.read(), '[]')
 
@@ -54,6 +58,8 @@ class TestBase(unittest.TestCase):
         Base._Base__nb_objects = 0
 
         Rectangle.save_to_file(None)
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+        
         with open("Rectangle.json") as file:
             self.assertEqual(file.read(), '[]')
 
@@ -67,3 +73,4 @@ class TestBase(unittest.TestCase):
             self.assertEqual(file.read(),
                              '[{"id": 1, "width": 1, '
                              '"height": 2, "x": 0, "y": 0}]')
+
