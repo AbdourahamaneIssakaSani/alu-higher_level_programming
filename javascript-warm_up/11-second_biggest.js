@@ -1,6 +1,6 @@
 #!/usr/bin/node
-let argsCount = process.argv.length;
-let numbers = [];
+const argsCount = process.argv.length;
+const numbers = [];
 switch (argsCount) {
   case 2:
   case 3:
