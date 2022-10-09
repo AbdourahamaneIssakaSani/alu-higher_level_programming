@@ -1,0 +1,111 @@
+#/bin/bash
+
+# pu test.txt
+# pu -m "test files"  --- all files pushed
+# pu                  --- push all with default message
+# pu test.txt text1.txt --- push many files with default message
+# pu test.txt text1.txt -m "mutiples files"
+help() {
+    echo "Usage: pu [ -h | --help ] [ -m | --message ]"
+    echo ""
+    echo "pu command allows you to add, commit and push your files"
+    exit 0
+}
+
+invalid_option() {
+    echo "Invalid option"
+    exit 2
+}
+
+process_options() {
+    ARGUMENTS=$(getopt -a -n pu --options hm: --longoptions help,message: -- "$@")
+    # echo "$ARGUMENTS"
+    eval set -- "$ARGUMENTS"
+    # echo "args after eval  : $ARGUMENTS"
+    # parameter
+    while :; do
+        case "$1" in
+        -m | --message)
+            commit="$2"
+            echo $commit
+            shift 2
+            ;;
+        -h | --help)
+            help
+            shift 2
+            break
+            ;;
+        --)
+            shift
+            break
+            ;;
+        \?)
+            invalid_option
+            exit 2
+            ;;
+        esac
+    done
+}
+
+# check if changes have been made
+if [ $(git status --porcelain | wc -l) -eq 0 ]; then
+    echo "You have NO changes"
+    exit 2
+fi
+
+# case of no arguemnts or options
+if [ $# -eq 0 ]; then
+    # check if changes have been made
+    # echo "You have changes"
+    git add .
+    git commit -m " :robot: automated commit of one or many files"
+else
+    ARGUMENTS=$(getopt -a -n pu --options hm: --longoptions help,message: -- "$@")
+    # echo "${#ARGUMENTS[@]}"
+    eval set -- "$ARGUMENTS"
+    # echo "args after eval  : $ARGUMENTS"
+    # parameter
+    while :; do
+        case "$1" in
+        -m | --message)
+            custom_commit_message="$2"
+            # echo $custom_commit_message
+            shift 2
+            ;;
+        -h | --help)
+            help
+            ;;
+        --)
+            shift
+            break
+            ;;
+        \?)
+            invalid_option
+            exit 2
+            ;;
+        esac
+    done
+
+    if [ "$custom_commit_message" ]; then
+        for FILE in "$@"; do
+            if [ ! -f $FILE ]; then
+                echo "$FILE is not a file"
+            else
+                git add $FILE
+            fi
+        done
+        git commit -m "$custom_commit_message"
+    else
+        for FILE in "$@"; do
+            if [ ! -f $FILE ]; then
+                echo "$FILE is not a file"
+            else
+                git add $FILE
+                git commit -m ":robot: automated commit of $FILE"
+            fi
+        done
+    fi
+fi
+
+git pull
+git push
