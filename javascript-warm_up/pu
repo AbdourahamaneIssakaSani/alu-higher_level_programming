@@ -55,7 +55,7 @@ check_changes() {
     fi
 }
 
-# case of no arguemnts or options
+# case of no arguemnts AND options
 if [ $# -eq 0 ]; then
     # check if changes have been made
     check_changes
@@ -70,13 +70,13 @@ else
     # parameter
     while :; do
         case "$1" in
+        -h | --help)
+            help
+            ;;
         -m | --message)
             custom_commit_message="$2"
             # echo $custom_commit_message
             shift 2
-            ;;
-        -h | --help)
-            help
             ;;
         --)
             shift
@@ -92,14 +92,19 @@ else
     check_changes
 
     if [ "$custom_commit_message" ]; then
-        for FILE in "$@"; do
-            if [ ! -f $FILE ]; then
-                echo "$FILE is not a file"
-            else
-                git add $FILE
-            fi
-        done
-        git commit -m "$custom_commit_message"
+        if [ $# -eq 0 ]; then
+            git add .
+            git commit -m "$custom_commit_message"
+        else
+            for FILE in "$@"; do
+                if [ ! -f $FILE ]; then
+                    echo "$FILE is not a file"
+                else
+                    git add $FILE
+                fi
+            done
+            git commit -m "$custom_commit_message"
+        fi
     else
         for FILE in "$@"; do
             if [ ! -f $FILE ]; then
