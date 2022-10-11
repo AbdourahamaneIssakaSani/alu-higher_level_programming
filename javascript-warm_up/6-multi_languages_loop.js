@@ -1,7 +1,4 @@
 #!/usr/bin/node
-
-const tx = ['C is fun', 'Python is cool', 'Javascript is amazing'];
-
-for (const t of tx) {
-  console.log(t);
-}
+['C is fun', 'Python is cool', 'Javascript is amazing'].forEach((t) =>
+  console.log(t)
+);
