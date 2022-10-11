@@ -2,6 +2,6 @@
 
 const tx = ['C is fun', 'Python is cool', 'Javascript is amazing'];
 
-for (t of tx) {
+for (const t of tx) {
   console.log(t);
 }
