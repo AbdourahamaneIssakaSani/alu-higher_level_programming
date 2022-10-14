@@ -15,16 +15,17 @@ function getCompletedTasks (data, userId) {
 
 const url = process.argv[2];
 
-const results = {};
 req.get(url, (err, res) => {
   if (err) {
     throw err;
+  } else {
+    const results = {};
+    const data = JSON.parse(res.body);
+    data.forEach((element) => {
+      if (!(element.userId in results)) {
+        results[element.userId] = getCompletedTasks(data, element.userId);
+      }
+    });
+    console.log(results);
   }
-  const data = JSON.parse(res.body);
-  data.forEach((element) => {
-    if (!(element.userId in results)) {
-      results[element.userId] = getCompletedTasks(data, element.userId);
-    }
-  });
-  console.log(results);
 });
