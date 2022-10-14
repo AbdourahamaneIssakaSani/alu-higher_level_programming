@@ -16,7 +16,10 @@ function getCompletedTasks (data = [], userId) {
 const url = process.argv[2];
 
 const results = {};
-req.get(url, (res) => {
+req.get(url, (err, res) => {
+  if (err) {
+    throw err;
+  }
   const data = JSON.parse(res.body);
   data.forEach((element) => {
     if (!(element.userId in results)) {
