@@ -1,10 +1,10 @@
 #!/usr/bin/node
 
 $.ajax({
-  url: "https://fourtonfish.com/hellosalut/?lang=fr",
-  type: "GET",
-  dataType: "json",
+  url: 'https://fourtonfish.com/hellosalut/?lang=fr',
+  type: 'GET',
+  dataType: 'json',
   success: (json) => {
-    $("div#hello").text(json);
-  },
+    $('div#hello').text(json);
+  }
 });

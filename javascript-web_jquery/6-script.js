@@ -1,5 +1,5 @@
 #!/usr/bin/node
 
-$("div#update_header").click(() => {
-  $("header").text("New Header!!!");
+$('div#update_header').click(() => {
+  $('header').text('New Header!!!');
 });
